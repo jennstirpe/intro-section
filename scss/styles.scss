@@ -1,0 +1,195 @@
+$almost-white: hsl(0, 0%, 98%);
+$medium-gray: hsl(0, 0%, 41%);
+$almost-black: hsl(0, 0%, 8%);
+
+
+body {
+    font-family: 'Epilogue', sans-serif;
+    background-color: $almost-white;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 1rem;
+
+    
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 13rem;
+        top: 0;
+        right: 1rem;
+        background-color: $almost-white;
+
+        .menu-opened {
+            margin-left: auto;
+            margin-bottom: 1rem;
+        }
+
+        .link {
+            text-decoration: none;
+            border: none;
+            background-color: $almost-white;  
+            color: $medium-gray;
+            font-size: 1rem; 
+            margin: 1rem;
+            padding: 0;
+            font-family: 'Epilogue', sans-serif;
+
+            .arrow-down {
+                margin-left: .5rem;
+                margin-bottom: .1rem;
+            }
+            
+
+            &:hover {
+                color: $almost-black;
+                cursor: pointer;
+            }
+        }
+
+        .close {
+            display: none;
+        }
+
+        .dropdown-list {
+            padding-left: 0;
+        }
+
+        .dropdown-list-item {
+            list-style: none;
+            margin: 1rem 1.75rem;
+
+            img {
+                margin-right: .5rem;
+            }
+        }
+
+        .main-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .account-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 3rem;
+        }
+    }
+}
+
+
+
+
+
+
+@media only screen and (min-width: 1440px) {
+    header {
+        height: 4rem;
+        justify-content: left;
+        align-items: center;
+
+        .logo {
+            width: 10%;
+        }
+    
+        .menu-closed, .menu-opened {
+            display: none;
+        }
+
+        nav {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 90%;
+
+            .link {
+                align-self: center;
+
+                .arrow-down {
+                    margin-left: .25rem;
+                }
+            }
+
+
+            .main-links {
+                flex-direction: row;
+
+                .dropdown {
+                    position: relative;
+                }
+
+                #features-dropdown{
+                    width: 9rem;
+                    left: -3.25rem;
+                }
+
+                #company-dropdown {
+                    width: 6.75rem;
+                    left: 1.25rem;
+                }
+    
+                .dropdown-menu {
+                    position: absolute;
+                    top: calc(100% + .25rem);
+                    border-radius: .75rem;
+                    box-shadow: 0 0 20px  rgba(0, 0, 0, .25);
+                    background-color: $almost-white;
+                    padding: .75rem;
+
+                    opacity: 0;
+                    pointer-events: none;
+                    transform: translateY(-.75rem);
+                    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+
+
+                    .dropdown-list {
+                        padding-left: 0;
+                    }
+            
+                    .dropdown-list-item {
+                        list-style: none;
+                        margin: 1rem 0rem;
+            
+                        img {
+                            margin-right: .5rem;
+                        }
+                    }
+
+                }
+
+                .dropdown > .link:focus + .dropdown-menu {
+                    opacity: 1;
+                    transform: translateY(0);
+                    pointer-events: auto;
+                }
+            }
+
+
+            .account-links {
+                flex-direction: row;
+                margin-top: 0;
+
+                a {
+                    &:nth-of-type(2) {
+                        border: 1px solid $medium-gray;
+                        border-radius: .75rem;
+                        padding: .75rem 1rem;;
+    
+                        &:hover {
+                            border: 1px solid $almost-black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
