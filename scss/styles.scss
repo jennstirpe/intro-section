@@ -6,7 +6,20 @@ $almost-black: hsl(0, 0%, 8%);
 body {
     font-family: 'Epilogue', sans-serif;
     background-color: $almost-white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
+
+.container {
+    width: 100%;
+    min-width: 23rem;
+}
+
+/*      HEADER/NAV STYLES       */
 
 header {
     display: flex;
@@ -15,16 +28,24 @@ header {
     position: relative;
     padding: 1rem;
 
-    
+    .main-nav-close {
+        display: none;
+    }
+
+    .sub-nav-close {
+        display: none;
+    }
 
     nav {
         display: flex;
         flex-direction: column;
         position: absolute;
         width: 13rem;
+        padding-top: 1rem;
         top: 0;
         right: 1rem;
         background-color: $almost-white;
+
 
         .menu-opened {
             margin-left: auto;
@@ -44,19 +65,21 @@ header {
             .arrow-down {
                 margin-left: .5rem;
                 margin-bottom: .1rem;
+                transform: rotate(0deg);
+                transition: transform 500ms linear;
+            }
+
+            .arrow-up {
+                transform: rotate(180deg);
             }
             
-
             &:hover {
                 color: $almost-black;
                 cursor: pointer;
             }
         }
 
-        .close {
-            display: none;
-        }
-
+        
         .dropdown-list {
             padding-left: 0;
         }
@@ -86,11 +109,105 @@ header {
 }
 
 
+/*      MAIN STYLES       */
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .banner {
+
+        #banner-desktop {
+            display: none;
+        }
+    
+        #banner-mobile {
+            width: 100%;
+            max-width: 44rem; 
+            height: auto;
+        }
+    }
+    
+    .desc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            margin: 2.5rem 0 0 0;
+        }
+
+        p {
+            color: $medium-gray;
+            font-size: 1.1rem;
+            line-height: 1.75rem;
+            padding: .25rem;
+        }
+
+        #learn-more-btn {
+            background-color: $almost-black;
+            border: 1px solid $almost-black;
+            color: $almost-white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            width: 9rem;
+            padding: 1rem 0;
+            border-radius: .75rem;
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .sites {
+            height: 2rem;
+            width: 100%;
+                
+            img {
+                height: 1.15rem;
+                margin: 0 .42rem;
+
+                &:nth-of-type(2) {
+                    height: 1.75rem;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+.attribution { 
+    font-size: 11px; text-align: center;
+    margin-top: 4rem;
+     
+    a { 
+        color: hsl(228, 45%, 44%); 
+    }
+}
+
+
+
+/*      RESPONSIVE STYLES       */
 
 
 
 @media only screen and (min-width: 1440px) {
+    .container {
+        width: 100%;
+    }
+
+
+    /*      HEADER/NAV STYLES       */
+
     header {
         height: 4rem;
         justify-content: left;
@@ -102,6 +219,10 @@ header {
     
         .menu-closed, .menu-opened {
             display: none;
+        }
+
+        .main-nav-close {
+            display: flex;
         }
 
         nav {
@@ -119,6 +240,9 @@ header {
                 }
             }
 
+            .sub-nav-close {
+                display: block;
+            }
 
             .main-links {
                 flex-direction: row;
@@ -180,16 +304,100 @@ header {
 
                 a {
                     &:nth-of-type(2) {
-                        border: 1px solid $medium-gray;
+                        background-color: $almost-black;
+                        color: $almost-white;
+                        border: 1px solid $almost-black;
                         border-radius: .75rem;
                         padding: .75rem 1rem;;
     
                         &:hover {
-                            border: 1px solid $almost-black;
+                            background-color: $almost-white;
+                            color: $almost-black;
                         }
                     }
                 }
             }
         }
     }
+
+    /*      MAIN STYLES       */
+
+
+    main {
+        flex-direction: row-reverse;
+        text-align: left;
+        height: 45rem;
+        padding: 2rem;
+    
+        .banner {
+            width: 50%;
+            height: 100%;
+
+            #banner-mobile {
+                display: none;
+            }
+        
+            #banner-desktop {
+                display: block;
+                height: 100%;
+            }
+        }
+        
+        .desc {
+            width: 50%;
+            height: 100%;
+            justify-content: flex-end;
+            align-items: flex-start;
+    
+            h1 {
+                margin: 2.5rem 0;
+                font-size: 5rem;
+
+                span {
+                    display: block
+                }
+            }
+    
+            p {
+                width: 70%;
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+            }
+    
+            #learn-more-btn {
+                text-align: center;
+                margin-bottom: 8rem;
+
+                &:hover {
+                    background-color: $almost-white;
+                    color: $almost-black;
+                }
+            }
+    
+            .sites {
+                height: 2rem;
+                width: 70%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                    
+                img {
+                    height: 1.25rem;
+                    margin: 0;
+    
+                    &:nth-of-type(2) {
+                        height: 2.25rem;
+                    }
+                }
+            }
+        }
+
+    }
+
 }
+
+
+
+
+
