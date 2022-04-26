@@ -1,7 +1,8 @@
-$almost-white: hsl(0, 0%, 98%);
-$medium-gray: hsl(0, 0%, 41%);
-$almost-black: hsl(0, 0%, 8%);
+    $almost-white: hsl(0, 0%, 98%);
+    $medium-gray: hsl(0, 0%, 41%);
+    $almost-black: hsl(0, 0%, 8%);
 
+    ;;
 
 body {
     font-family: 'Epilogue', sans-serif;
@@ -39,7 +40,9 @@ header {
     padding: 1rem;
 
     .main-nav-close {
-        display: none;
+        width: 0;
+        opacity: 0;
+        right: -10rem;
     }
 
     .sub-nav-close {
@@ -51,12 +54,15 @@ header {
         flex-direction: column;
         position: absolute;
         width: 13rem;
-        height: 100vh;
+        height: 120vh;
         padding: 1rem;
         top: 0;
         right: 0rem;
         background-color: $almost-white;
         z-index: 10;
+        opacity: 1;
+
+        transition: all 250ms linear;
 
 
         .menu-opened {
@@ -74,11 +80,13 @@ header {
             padding: 0;
             font-family: 'Epilogue', sans-serif;
 
+            transition: color 250ms linear;
+
             .arrow-down {
                 margin-left: .5rem;
                 margin-bottom: .1rem;
-                // transform: rotate(0deg);
-                transition: transform 500ms linear;
+
+                transition: transform 300ms linear;
             }
 
             .arrow-up {
@@ -171,6 +179,13 @@ main {
             display: block;
             margin-top: 1rem;
             margin-bottom: 3rem;
+
+            transition: all 250ms ease-in;
+
+            &:hover {
+                background-color: $almost-white;
+                color: $almost-black;
+            }
         }
 
         .sites {
@@ -189,23 +204,6 @@ main {
     }
 
 }
-
-
-
-
-
-
-
-
-.attribution { 
-    font-size: 11px; text-align: center;
-    margin-top: 4rem;
-     
-    a { 
-        color: hsl(228, 45%, 44%); 
-    }
-}
-
 
 
 /*      DESKTOP STYLES       */
@@ -236,6 +234,10 @@ main {
         .main-nav-close {
             display: flex;
             height: 4rem;
+
+            width: 100%;
+            opacity: 1;
+            right: 0rem;
         }
 
         nav {
@@ -303,19 +305,11 @@ main {
 
                 }
 
-                // .dropdown > .link:focus + .dropdown-menu {
-                //     opacity: 1;
-                //     transform: translateY(0);
-                //     pointer-events: auto;
-                // }
-
                 .active {
                     opacity: 1;
                     transform: translateY(0);
                     pointer-events: auto;
                 }
-
-                
             }
 
 
@@ -329,7 +323,9 @@ main {
                         color: $almost-white;
                         border: 1px solid $almost-black;
                         border-radius: .75rem;
-                        padding: .75rem 1rem;;
+                        padding: .75rem 1rem;
+
+                        transition: all 200ms ease-in;
     
                         &:hover {
                             background-color: $almost-white;
@@ -375,7 +371,7 @@ main {
                 font-size: 5rem;
 
                 span {
-                    display: block
+                    display: block;
                 }
             }
     
@@ -389,10 +385,6 @@ main {
                 text-align: center;
                 margin-bottom: 8rem;
 
-                &:hover {
-                    background-color: $almost-white;
-                    color: $almost-black;
-                }
             }
     
             .sites {
@@ -422,3 +414,21 @@ main {
 
 
 
+
+
+
+
+
+
+
+
+
+
+.attribution { 
+    font-size: 11px; text-align: center;
+    margin-top: 4rem;
+     
+    a { 
+        color: hsl(228, 45%, 44%); 
+    }
+}
